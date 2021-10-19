@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Label : MonoBehaviour
+public class PollutionMeter : MonoBehaviour
 {
     double nextTime = 0;
     double interval = 0.25;
 
-
     public GameObject button;
-    ClickScript scr; 
+    ClickScript scr;
     Text label;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,7 @@ public class Label : MonoBehaviour
     {
         if (Time.time >= nextTime)
         {
-            label.text = scr.UpdateEnergy();
+            label.text = scr.UpdatePollution();
             nextTime += interval;
         }
     }

@@ -16,13 +16,23 @@ public class ClickScript : MonoBehaviour
     double windMulti = 1.0;
     double hydroMulti = 1.0;
 
+    //base production per item
+    public int solarProd = 100;
+    public int hydroProd = 300;
+    public int windProd = 500;
 
     //cost base for each energy type
-    int solarCost = 500;
-    int hydroCost = 700;
-    int windCost = 1000;
+    public int solarCost = 500;
+    public int hydroCost = 700;
+    public int windCost = 1000;
+
+    //polution dissipation rates
+    public double solarPoll = 0.1;
+    public double windPoll = 0.5;
+    public double hydroPoll = 0.2;
 
     int Energy = 0;
+    public double Pollution = 5000;
     
 
     //getters to display prices
@@ -77,11 +87,17 @@ public class ClickScript : MonoBehaviour
 
 
     //updates power label
-    public string UpdateLabel()
+    public string UpdateEnergy()
     {
         Energy += (int)(100 * solarMulti * solarPanelCnt);
         Energy += (int)(400 * windMulti * windMillCnt);
         Energy += (int)(150 * hydroMulti * hydroPlantCnt);
         return "Current Energy: " + Energy;
+    }
+
+    public string UpdatePollution()
+    {
+        Pollution -= (double)(solarPanelCnt * solarPoll + windMillCnt * windPoll + hydroPlantCnt * hydroPoll);
+        return "Current Pollution: " + Pollution;
     }
 }
