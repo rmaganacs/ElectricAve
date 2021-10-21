@@ -92,7 +92,7 @@ public class ClickScript : MonoBehaviour
         Energy += (int)(100 * solarMulti * solarPanelCnt);
         Energy += (int)(400 * windMulti * windMillCnt);
         Energy += (int)(150 * hydroMulti * hydroPlantCnt);
-        return "Current Energy: " + Energy;
+        return "" + Energy;
     }
 
     public string UpdatePollution()
