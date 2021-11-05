@@ -3588,12 +3588,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8af18683287924459a3b0d25a11eb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solarProd: 100
-  hydroProd: 300
-  windProd: 500
-  solarCost: 500
-  hydroCost: 700
-  windCost: 1000
+  solarProd: 7
+  hydroProd: 50
+  windProd: 9
+  solarCost: 2000
+  hydroCost: 65000
+  windCost: 9000
   solarPoll: 0.1
   windPoll: 0.5
   hydroPoll: 0.2
