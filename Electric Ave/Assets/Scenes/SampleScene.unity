@@ -7454,13 +7454,13 @@ MonoBehaviour:
   solarProd: 7
   hydroProd: 50
   windProd: 9
-  geoProd: 700
-  bioProd: 1000
+  geoProd: 250
+  bioProd: 150
   solarCost: 2000
   hydroCost: 65000
   windCost: 9000
-  geoCost: 1200
-  bioCost: 1500
+  geoCost: 1250000
+  bioCost: 1500000
   solarPoll: 0.1
   windPoll: 0.5
   hydroPoll: 0.2
