@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 110663376}
   - component: {fileID: 110663375}
   - component: {fileID: 110663374}
+  - component: {fileID: 110663377}
   m_Layer: 5
   m_Name: SolarButton
   m_TagString: Untagged
@@ -630,7 +631,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789352577}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -693,6 +694,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 110663377}
+        m_TargetAssemblyTypeName: WaitTimer, Scripts
+        m_MethodName: Start
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &110663375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +744,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110663372}
   m_CullTransparentMesh: 1
+--- !u!114 &110663377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110663372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268afa5fe3928ac48a107a85548f271f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindButton: {fileID: 110663374}
 --- !u!1 &165458627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,7 +1711,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789352577}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3371,8 +3397,8 @@ RectTransform:
   - {fileID: 1679245183}
   - {fileID: 297215690}
   - {fileID: 368606852}
-  - {fileID: 110663373}
   - {fileID: 452183482}
+  - {fileID: 110663373}
   - {fileID: 1975603036}
   - {fileID: 658192949}
   - {fileID: 744560095}

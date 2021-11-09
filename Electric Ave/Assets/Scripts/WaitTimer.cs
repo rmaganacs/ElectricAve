@@ -8,7 +8,7 @@ public class WaitTimer : MonoBehaviour
     public Button WindButton;
     private bool isEnabled = false;
 
-    void Start()
+    public void Start()
     {
         StartCoroutine(ButtonCoroutine(isEnabled));
     }
