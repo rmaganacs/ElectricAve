@@ -1376,6 +1376,7 @@ GameObject:
   - component: {fileID: 368606855}
   - component: {fileID: 368606854}
   - component: {fileID: 368606853}
+  - component: {fileID: 368606856}
   m_Layer: 5
   m_Name: WindButton
   m_TagString: Untagged
@@ -1441,11 +1442,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 368606854}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 368606856}
+        m_TargetAssemblyTypeName: WaitTimer, Scripts
+        m_MethodName: Start
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2120946718}
         m_TargetAssemblyTypeName: ClickScript, Scripts
         m_MethodName: collectWind
@@ -1496,6 +1509,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368606851}
   m_CullTransparentMesh: 1
+--- !u!114 &368606856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368606851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268afa5fe3928ac48a107a85548f271f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindButton: {fileID: 368606853}
 --- !u!1 &427347204
 GameObject:
   m_ObjectHideFlags: 0
