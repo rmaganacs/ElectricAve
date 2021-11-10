@@ -2110,6 +2110,7 @@ GameObject:
   - component: {fileID: 583444204}
   - component: {fileID: 583444206}
   - component: {fileID: 583444205}
+  - component: {fileID: 583444207}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2133,8 +2134,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -32.11}
+  m_SizeDelta: {x: 0, y: 64.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583444205
 MonoBehaviour:
@@ -2149,7 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2157,19 +2158,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: ed3b74e410b2c1d4495254f3a9985143, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Cost: \t\t\nOwned:"
 --- !u!222 &583444206
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2178,6 +2179,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583444203}
   m_CullTransparentMesh: 1
+--- !u!114 &583444207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583444203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3829786ffe1542a9a472891b5e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2120946716}
+  value: 1
 --- !u!1 &622999866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,8 +2381,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuySolarPanel
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: upgradeGeo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3623,6 +3638,7 @@ GameObject:
   - component: {fileID: 815426711}
   - component: {fileID: 815426713}
   - component: {fileID: 815426712}
+  - component: {fileID: 815426714}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3646,8 +3662,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -32.11}
+  m_SizeDelta: {x: 0, y: 64.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815426712
 MonoBehaviour:
@@ -3662,7 +3678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3670,19 +3686,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: ed3b74e410b2c1d4495254f3a9985143, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Cost: \t\t\nOwned:"
 --- !u!222 &815426713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3691,6 +3707,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815426710}
   m_CullTransparentMesh: 1
+--- !u!114 &815426714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815426710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3829786ffe1542a9a472891b5e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2120946716}
+  value: 2
 --- !u!1 &946936009
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,8 +4038,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuySolarPanel
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: upgradeBio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4689,8 +4719,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuySolarPanel
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: upgradeSolar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4823,7 +4853,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2120946718}
         m_TargetAssemblyTypeName: ClickScript, Scripts
-        m_MethodName: BuyHydroplant
+        m_MethodName: upgradeHydro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6216,6 +6246,7 @@ GameObject:
   - component: {fileID: 1589415737}
   - component: {fileID: 1589415739}
   - component: {fileID: 1589415738}
+  - component: {fileID: 1589415740}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6239,8 +6270,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -37.1}
+  m_SizeDelta: {x: 0, y: 74.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1589415738
 MonoBehaviour:
@@ -6255,7 +6286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6263,19 +6294,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: ed3b74e410b2c1d4495254f3a9985143, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Cost: \t\t\nOwned:"
 --- !u!222 &1589415739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6284,6 +6315,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589415736}
   m_CullTransparentMesh: 1
+--- !u!114 &1589415740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589415736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3829786ffe1542a9a472891b5e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2120946716}
+  value: 4
 --- !u!1 &1593233169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,8 +6620,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuyWindmill
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: upgradeWind
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6785,6 +6830,7 @@ GameObject:
   - component: {fileID: 1693597834}
   - component: {fileID: 1693597836}
   - component: {fileID: 1693597835}
+  - component: {fileID: 1693597837}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6808,8 +6854,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -46.72}
+  m_SizeDelta: {x: 0, y: 93.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693597835
 MonoBehaviour:
@@ -6824,7 +6870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6832,19 +6878,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: ed3b74e410b2c1d4495254f3a9985143, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Cost: \t\t\nOwned:"
 --- !u!222 &1693597836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6853,6 +6899,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693597833}
   m_CullTransparentMesh: 1
+--- !u!114 &1693597837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693597833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3829786ffe1542a9a472891b5e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2120946716}
+  value: 5
 --- !u!1 &1754513287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7173,6 +7233,7 @@ GameObject:
   - component: {fileID: 1866270967}
   - component: {fileID: 1866270969}
   - component: {fileID: 1866270968}
+  - component: {fileID: 1866270970}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -7196,8 +7257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -35.03}
+  m_SizeDelta: {x: 0, y: 70.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866270968
 MonoBehaviour:
@@ -7212,7 +7273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7220,19 +7281,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: ed3b74e410b2c1d4495254f3a9985143, type: 3}
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Cost: \t\t\nOwned:"
 --- !u!222 &1866270969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7241,6 +7302,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866270966}
   m_CullTransparentMesh: 1
+--- !u!114 &1866270970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866270966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f3829786ffe1542a9a472891b5e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2120946716}
+  value: 3
 --- !u!1 &1898798761
 GameObject:
   m_ObjectHideFlags: 0
@@ -8563,24 +8638,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8af18683287924459a3b0d25a11eb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solarCap: 1000
-  windCap: 1000
-  hydroCap: 1000
-  geoCap: 1000
-  bioCap: 1000
-  solarProd: 7
-  hydroProd: 50
-  windProd: 9
-  geoProd: 250
-  bioProd: 150
-  solarCost: 2000
-  hydroCost: 65000
-  windCost: 9000
-  geoCost: 1250000
-  bioCost: 1500000
-  solarPoll: 0.1
-  windPoll: 0.5
-  hydroPoll: 0.2
-  geoPoll: 0.4
-  bioPoll: 0.4
   Pollution: 5000

@@ -3,59 +3,106 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public class EnergySource
+{
+    protected int production;
+    protected int cap;
+    protected int cost;
+    protected double poll;
+    protected int amt = 0;
+    protected int pwr = 0;
+    protected int upgradeCost;
+    public EnergySource(int prod, int cap, int cost, double poll)
+    {
+        this.production = prod;
+        this.cap = cap;
+        this.cost = cost;
+        this.poll = poll;
+
+        upgradeCost = (int)(cost * 3.3);
+    }
+
+    public void setAmt(int set)
+    {
+        amt = set;
+    }
+
+    public void accumPwr()
+    {
+        if (pwr + (int)(production * amt) < cap)
+        {
+            pwr += (int)(production * amt);
+        }
+        else pwr = cap;
+    }
+
+    public int buyNew(int Energy)
+    {
+        if (Energy > cost)
+        {
+            Energy = Energy - cost;
+            amt++;
+        }
+        return Energy;
+    }
+
+    public int getPwr()
+    {
+        int temp = pwr;
+        pwr = 0;
+        return temp;
+    }
+
+    public double getPoll()
+    {
+        return amt * poll;
+    }
+    public int getCost()
+    {
+        return cost;
+    }
+    
+    public int getAmt()
+    {
+        return amt;
+    }
+
+    public int getUpgradeCost()
+    {
+        return upgradeCost;
+    }
+    public int upgrade(int Energy)
+    {
+        if(Energy >= upgradeCost)
+        {
+            Energy -= upgradeCost;
+            cost = (int)(cost * 1.5);
+            production = (int)(production * 1.5);
+            cap = (int)(cap * 1.5);
+            upgradeCost = (int)(upgradeCost * 1.5);
+        }
+        return Energy;
+    }
+}
 public class ClickScript : MonoBehaviour
 {
+
     double nextTime = 0;
-    double interval = 0.25;
+    double interval = 0.5;
 
+    public EnergySource solar = new EnergySource(7, 1000, 2000, .1);
+    public EnergySource wind  = new EnergySource(9, 1000, 9000, .5);
+    public EnergySource hydro = new EnergySource(50, 1000, 65000, .2);
+    public EnergySource geo   = new EnergySource(250, 1000, 1250000, .4);
+    public EnergySource bio   = new EnergySource(150, 1000, 1500000, .4);
+
+    private void Start()
+    {
+        wind.setAmt(1);
+    }
     //amount of resources
-    int solarPanelCnt = 1;
-    int windMillCnt = 0;
-    int hydroPlantCnt = 0;
-    int geoCnt = 0;
-    int bioCnt = 0;
 
-    //accumulators
-    int solarPwr = 0;
-    int windPwr = 0;
-    int hydroPwr = 0;
-    int geoPwr = 0;
-    int bioPwr = 0;
-
-    //capacities
-    public int solarCap = 1000;
-    public int windCap = 1000;
-    public int hydroCap = 1000;
-    public int geoCap = 1000;
-    public int bioCap = 1000;
-
-    //multiplier of production (based off upgrades)
-    double solarMulti = 1.0;
-    double windMulti = 1.0;
-    double hydroMulti = 1.0;
-    double bioMulti = 1.0;
-    double geoMulti = 1.0;
-
-    //base production per item
-    public int solarProd = 100;
-    public int hydroProd = 300;
-    public int windProd = 500;
-    public int geoProd = 700;
-    public int bioProd = 1000;
-
-    //cost base for each energy type
-    public int solarCost = 500;
-    public int hydroCost = 700;
-    public int windCost = 1000;
-    public int geoCost = 1200;
-    public int bioCost = 1500;
-
-    //polution dissipation rates
-    public double solarPoll = 0.1;
-    public double windPoll = 0.5;
-    public double hydroPoll = 0.2;
-    public double geoPoll = 0.4;
-    public double bioPoll = 0.4;
 
     int Energy = 0;
     public double Pollution = 5000;
@@ -64,122 +111,112 @@ public class ClickScript : MonoBehaviour
     //getters to display prices
     public int getSolarCost()
     {
-        return solarCost;
+        return solar.getCost();
     }
 
     public int getWindCost()
     {
-        return windCost;
+        return wind.getCost();
     }
 
     public int getHydroCost()
     {
-        return hydroCost;
+        return hydro.getCost();
     }
 
     public int getGeoCost()
     {
-        return geoCost;
+        return geo.getCost();
     }
 
     public int getBioCost()
     {
-        return bioCost;
+        return bio.getCost();
     }
 
     //upgrade funcs
+
+    public void upgradeWind()
+    {
+        Energy = wind.upgrade(Energy);
+    }
+
     public void upgradeSolar()
     {
-
+        Energy = solar.upgrade(Energy);
     }
 
     public void upgradeHydro()
     {
-
-    }
-
-    public void upgradeWind()
-    {
-
-    }
-
-    public void upgradeGeo()
-    {
-
+        Energy = hydro.upgrade(Energy);
     }
 
     public void upgradeBio()
     {
-
+        Energy = bio.upgrade(Energy);
     }
 
+    public void upgradeGeo()
+    {
+        Energy = geo.upgrade(Energy);
+    }
     //funcs for buttons
     public void BuySolarPanel()
     {
-        if (Energy >= solarCost)
-        {
-            Energy =  Energy - solarCost;
-            solarPanelCnt++;
-            solarCost = (int)(solarCost * 1.3);
-        }
-        
+        Energy = solar.buyNew(Energy);      
     }
 
     public void BuyWindmill()
     {
-        if (Energy >= windCost)
-        {
-            Energy -= windCost;
-            windMillCnt++;
-            windCost = (int)(windCost * 1.3);
-        }
-
+        Energy = wind.buyNew(Energy);
     }
 
     public void BuyHydroplant()
     {
-        if (Energy >= hydroCost)
-        {
-            Energy -= hydroCost;
-            hydroPlantCnt++;
-            hydroCost = (int)(hydroCost * 1.3);
-        }
+        Energy = hydro.buyNew(Energy);
+    }
 
+    public void BuyBio()
+    {
+        Energy = bio.buyNew(Energy);
+    }
+
+    public void BuyGeo()
+    {
+        Energy = geo.buyNew(Energy);
     }
 
     public void collectWind()
     {
-        Energy += windPwr;
-        windPwr = 0;
+        Energy += wind.getPwr();
     }
 
     public void collectHydro()
     {
-        Energy += hydroPwr;
-        hydroPwr = 0;
+        Energy += hydro.getPwr();
     }
 
     public void collectSolar()
     {
-        Energy += solarPwr;
-        solarPwr = 0;
+        Energy += solar.getPwr();
     }
 
     public void collectGeo()
     {
-        Energy += geoPwr;
-        geoPwr = 0;
+        Energy += geo.getPwr();
     }
-
     public void collectBio()
     {
-        Energy += bioPwr;
-        bioPwr = 0;
+        Energy += bio.getPwr();
     }
 
     public float getPollutionProduction()
     {
-        return (float)(solarPoll + windPoll + hydroPoll + geoPoll + bioPoll);
+        return (float)(solar.getPoll() +
+                       wind.getPoll()  +
+                       hydro.getPoll() +
+                       geo.getPoll()   +
+                       bio.getPoll());
     }
 
     //updates power label
@@ -196,35 +233,12 @@ public class ClickScript : MonoBehaviour
        
         if (Time.time >= nextTime)
         {
-            if (solarPwr + (int)(solarCost * solarMulti * solarPanelCnt) < solarCap){
-                solarPwr += (int)(solarCost * solarMulti * solarPanelCnt);
-            }
-            else solarPwr = solarCap;
-
-            if (windPwr + (int)(windCost * windMulti * windMillCnt) < windCap)
-            {
-                windPwr += (int)(windCost * windMulti * windMillCnt);
-            }
-            else windPwr = windCap;
-
-            if (hydroPwr + (int)(hydroCost * hydroMulti * hydroPlantCnt) < hydroCap)
-            {
-                hydroPwr += (int)(hydroCost * hydroMulti * hydroPlantCnt);
-            }
-            else hydroPwr = hydroCap;
-
-            if (geoPwr + (int)(geoCost * geoMulti * geoCnt) < geoCap)
-            {
-                geoPwr += (int)(geoCost * geoMulti * geoCnt);
-            }
-            else geoPwr = geoCap;
-
-            if (bioPwr + (int)(bioCost * bioMulti * bioCnt) < bioCap)
-            {
-                bioPwr += (int)(bioCost * bioMulti * bioCnt);
-            }
-            else bioPwr = bioCap;
-
+            solar.accumPwr();
+            hydro.accumPwr();
+            wind.accumPwr();
+            geo.accumPwr();
+            bio.accumPwr();
+            nextTime += interval;
         }
     }
 }
