@@ -13,6 +13,9 @@ public class EnergySource
     protected int amt = 0;
     protected int pwr = 0;
     protected int upgradeCost;
+    public Image energyImage;
+    protected bool isLocked = true;
+
     public EnergySource(int prod, int cap, int cost, double poll)
     {
         this.production = prod;
@@ -26,6 +29,15 @@ public class EnergySource
     public void setAmt(int set)
     {
         amt = set;
+    }
+
+    public bool unlock()
+    {
+        if (isLocked && amt == 0) {
+            isLocked = false;
+            return true;
+        }
+        return false;
     }
 
     public void accumPwr()
@@ -58,6 +70,7 @@ public class EnergySource
     {
         return amt * poll;
     }
+
     public int getCost()
     {
         return cost;
@@ -72,6 +85,12 @@ public class EnergySource
     {
         return upgradeCost;
     }
+
+    public bool getLocked()
+    {
+        return isLocked;
+    }
+
     public int upgrade(int Energy)
     {
         if(Energy >= upgradeCost)
@@ -136,14 +155,14 @@ public class ClickScript : MonoBehaviour
 
     //upgrade funcs
 
-    public void upgradeWind()
-    {
-        Energy = wind.upgrade(Energy);
-    }
-
     public void upgradeSolar()
     {
         Energy = solar.upgrade(Energy);
+    }
+
+    public void upgradeWind()
+    {
+        Energy = wind.upgrade(Energy);
     }
 
     public void upgradeHydro()
@@ -151,19 +170,20 @@ public class ClickScript : MonoBehaviour
         Energy = hydro.upgrade(Energy);
     }
 
+    public void upgradeGeo()
+        {
+            Energy = geo.upgrade(Energy);
+        }
+
     public void upgradeBio()
     {
         Energy = bio.upgrade(Energy);
     }
 
-    public void upgradeGeo()
-    {
-        Energy = geo.upgrade(Energy);
-    }
-    //funcs for buttons
+    //funcs for buying
     public void BuySolarPanel()
     {
-        Energy = solar.buyNew(Energy);      
+        Energy = solar.buyNew(Energy);
     }
 
     public void BuyWindmill()
@@ -176,14 +196,20 @@ public class ClickScript : MonoBehaviour
         Energy = hydro.buyNew(Energy);
     }
 
+    public void BuyGeo()
+    {
+        Energy = geo.buyNew(Energy);
+    }
+
     public void BuyBio()
     {
         Energy = bio.buyNew(Energy);
     }
 
-    public void BuyGeo()
+    //funcs for collecting
+    public void collectSolar()
     {
-        Energy = geo.buyNew(Energy);
+        Energy += solar.getPwr();
     }
 
     public void collectWind()
@@ -196,19 +222,76 @@ public class ClickScript : MonoBehaviour
         Energy += hydro.getPwr();
     }
 
-    public void collectSolar()
-    {
-        Energy += solar.getPwr();
-    }
-
     public void collectGeo()
     {
         Energy += geo.getPwr();
     }
+
     public void collectBio()
     {
         Energy += bio.getPwr();
     }
+
+    //funcs for unlocking
+    //public void unlockSolar()
+    //{
+    //    if (solar.unlock())
+    //    {
+    //        solar.energyImage.sprite = Sprites.Load<Sprite>("locked_solarpanel");
+    //    }
+    //    else
+    //    {
+    //        solar.energyImage.sprite = Sprites.Load<Sprite>("solar panel");
+    //    }
+    //}
+
+    //public void unlockWind()
+    //{
+    //    if (wind.unlock())
+    //    {
+    //        wind.energyImage.sprite = Sprites.Load<Sprite>("locked_windturbines");
+    //    }
+    //    else
+    //    {
+    //        wind.energyImage.sprite = Sprites.Load<Sprite>("wind turbines");
+    //    }
+    //}
+
+    //public void unlockHydro()
+    //{
+    //    if (hydro.unlock())
+    //    {
+    //        hydro.energyImage.sprite = Sprites.Load<Sprite>("locked_dam");
+    //    }
+    //    else
+    //    {
+    //        hydro.energyImage.sprite = Sprites.Load<Sprite>("dam");
+    //    }
+    //}
+
+    //public void unlockGeo()
+    //{
+    //    if (geo.unlock())
+    //    {
+    //        geo.energyImage.sprite = Sprites.Load<Sprite>("locked_geothermal");
+    //    }
+    //    else
+    //    {
+    //        geo.energyImage.sprite = Sprites.Load<Sprite>("geothermal");
+    //    }
+    //}
+
+    //public void unlockBio()
+    //{
+    //    if (bio.unlock())
+    //    {
+    //        bio.energyImage.sprite = Sprites.Load<Sprite>("locked_biofuel");
+    //    }
+    //    else
+    //    {
+    //        bio.energyImage.sprite = Sprites.Load<Sprite>("biofuel");
+    //    }
+    //}
 
     public float getPollutionProduction()
     {
