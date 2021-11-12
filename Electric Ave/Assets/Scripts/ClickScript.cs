@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class EnergySource
 {
     protected int production;
@@ -13,9 +11,6 @@ public class EnergySource
     protected int amt = 0;
     protected int pwr = 0;
     protected int upgradeCost;
-    public Image energyImage;
-    protected bool isLocked = true;
-
     public EnergySource(int prod, int cap, int cost, double poll)
     {
         this.production = prod;
@@ -29,15 +24,6 @@ public class EnergySource
     public void setAmt(int set)
     {
         amt = set;
-    }
-
-    public bool unlock()
-    {
-        if (isLocked && amt == 0) {
-            isLocked = false;
-            return true;
-        }
-        return false;
     }
 
     public void accumPwr()
@@ -70,12 +56,11 @@ public class EnergySource
     {
         return amt * poll;
     }
-
     public int getCost()
     {
         return cost;
     }
-    
+
     public int getAmt()
     {
         return amt;
@@ -85,15 +70,9 @@ public class EnergySource
     {
         return upgradeCost;
     }
-
-    public bool getLocked()
-    {
-        return isLocked;
-    }
-
     public int upgrade(int Energy)
     {
-        if(Energy >= upgradeCost)
+        if (Energy >= upgradeCost)
         {
             Energy -= upgradeCost;
             cost = (int)(cost * 1.5);
@@ -110,11 +89,12 @@ public class ClickScript : MonoBehaviour
     double nextTime = 0;
     double interval = 0.5;
 
-    public EnergySource solar = new EnergySource(7, 1000, 2000, .1);
-    public EnergySource wind  = new EnergySource(9, 1000, 9000, .5);
-    public EnergySource hydro = new EnergySource(50, 1000, 65000, .2);
-    public EnergySource geo   = new EnergySource(250, 1000, 1250000, .4);
-    public EnergySource bio   = new EnergySource(150, 1000, 1500000, .4);
+    public EnergySource solar = new EnergySource(7, 1000, 10, .1);
+    public EnergySource wind  = new EnergySource(9, 1000, 10, .5);
+    public EnergySource hydro = new EnergySource(50, 1000, 10, .2);
+    public EnergySource bio = new EnergySource(150, 1000, 10, .4);
+    public EnergySource geo   = new EnergySource(250, 1000, 10, .4);
+    public Unlock sample;
 
     private void Start()
     {
@@ -132,7 +112,10 @@ public class ClickScript : MonoBehaviour
     {
         return solar.getCost();
     }
-
+    public int getEnergy()
+    {
+        return Energy;
+    }
     public int getWindCost()
     {
         return wind.getCost();
@@ -155,14 +138,14 @@ public class ClickScript : MonoBehaviour
 
     //upgrade funcs
 
-    public void upgradeSolar()
-    {
-        Energy = solar.upgrade(Energy);
-    }
-
     public void upgradeWind()
     {
         Energy = wind.upgrade(Energy);
+    }
+
+    public void upgradeSolar()
+    {
+        Energy = solar.upgrade(Energy);
     }
 
     public void upgradeHydro()
@@ -170,20 +153,19 @@ public class ClickScript : MonoBehaviour
         Energy = hydro.upgrade(Energy);
     }
 
-    public void upgradeGeo()
-        {
-            Energy = geo.upgrade(Energy);
-        }
-
     public void upgradeBio()
     {
         Energy = bio.upgrade(Energy);
     }
 
-    //funcs for buying
+    public void upgradeGeo()
+    {
+        Energy = geo.upgrade(Energy);
+    }
+    //funcs for buttons
     public void BuySolarPanel()
     {
-        Energy = solar.buyNew(Energy);
+        Energy = solar.buyNew(Energy);      
     }
 
     public void BuyWindmill()
@@ -196,102 +178,45 @@ public class ClickScript : MonoBehaviour
         Energy = hydro.buyNew(Energy);
     }
 
-    public void BuyGeo()
-    {
-        Energy = geo.buyNew(Energy);
-    }
-
     public void BuyBio()
     {
         Energy = bio.buyNew(Energy);
     }
 
-    //funcs for collecting
-    public void collectSolar()
+    public void BuyGeo()
     {
-        Energy += solar.getPwr();
+        Energy = geo.buyNew(Energy);
     }
 
     public void collectWind()
     {
         Energy += wind.getPwr();
+        sample.amountCheck();
+
     }
 
     public void collectHydro()
     {
         Energy += hydro.getPwr();
+        sample.amountCheck();
+    }
+
+    public void collectSolar()
+    {
+        Energy += solar.getPwr();
+        sample.amountCheck();
     }
 
     public void collectGeo()
     {
         Energy += geo.getPwr();
+        sample.amountCheck();
     }
-
     public void collectBio()
     {
         Energy += bio.getPwr();
+        sample.amountCheck();
     }
-
-    //funcs for unlocking
-    //public void unlockSolar()
-    //{
-    //    if (solar.unlock())
-    //    {
-    //        solar.energyImage.sprite = Sprites.Load<Sprite>("locked_solarpanel");
-    //    }
-    //    else
-    //    {
-    //        solar.energyImage.sprite = Sprites.Load<Sprite>("solar panel");
-    //    }
-    //}
-
-    //public void unlockWind()
-    //{
-    //    if (wind.unlock())
-    //    {
-    //        wind.energyImage.sprite = Sprites.Load<Sprite>("locked_windturbines");
-    //    }
-    //    else
-    //    {
-    //        wind.energyImage.sprite = Sprites.Load<Sprite>("wind turbines");
-    //    }
-    //}
-
-    //public void unlockHydro()
-    //{
-    //    if (hydro.unlock())
-    //    {
-    //        hydro.energyImage.sprite = Sprites.Load<Sprite>("locked_dam");
-    //    }
-    //    else
-    //    {
-    //        hydro.energyImage.sprite = Sprites.Load<Sprite>("dam");
-    //    }
-    //}
-
-    //public void unlockGeo()
-    //{
-    //    if (geo.unlock())
-    //    {
-    //        geo.energyImage.sprite = Sprites.Load<Sprite>("locked_geothermal");
-    //    }
-    //    else
-    //    {
-    //        geo.energyImage.sprite = Sprites.Load<Sprite>("geothermal");
-    //    }
-    //}
-
-    //public void unlockBio()
-    //{
-    //    if (bio.unlock())
-    //    {
-    //        bio.energyImage.sprite = Sprites.Load<Sprite>("locked_biofuel");
-    //    }
-    //    else
-    //    {
-    //        bio.energyImage.sprite = Sprites.Load<Sprite>("biofuel");
-    //    }
-    //}
 
     public float getPollutionProduction()
     {
