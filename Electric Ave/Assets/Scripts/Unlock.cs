@@ -119,7 +119,7 @@ public class Unlock : MonoBehaviour
 
             hydroUn = true;
         }
-        if (hydroChecker >= 1 && bioUn == false)
+        if (bioChecker >= 1 && bioUn == false)
         {
             BioButtonUpgrade.GetComponent<Image>().sprite = BioImageUnockedUpgrade;
             BioButtonUpgrade.interactable = true;
@@ -135,7 +135,7 @@ public class Unlock : MonoBehaviour
 
             bioUn = true;
         }
-        if (hydroChecker >= 1 && geoUn == false)
+        if (geoChecker >= 1 && geoUn == false)
         {
             GeoButtonUpgrade.GetComponent<Image>().sprite = GeoImageUnockedUpgrade;
             GeoButtonUpgrade.interactable = true;
