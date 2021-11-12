@@ -36,6 +36,21 @@ public class ButtonInfo : MonoBehaviour
             case 5:
                 label.text = "Cost : " + scr.geo.getCost() + "\n" + "Owned: " + scr.geo.getAmt();
                 break;
+            case 6:
+                label.text = "Cost : " + scr.wind.getUpgradeCost() + "\n" + "Level: " + scr.wind.getLevel();
+                break;
+            case 7:
+                label.text = "Cost : " + scr.solar.getUpgradeCost() + "\n" + "Level: " + scr.solar.getLevel();
+                break;
+            case 8:
+                label.text = "Cost : " + scr.hydro.getUpgradeCost() + "\n" + "Level: " + scr.hydro.getLevel();
+                break;
+            case 9:
+                label.text = "Cost : " + scr.bio.getUpgradeCost() + "\n" + "Level: " + scr.bio.getLevel();
+                break;
+            case 10:
+                label.text = "Cost : " + scr.geo.getUpgradeCost() + "\n" + "Level: " + scr.geo.getLevel();
+                break;
         }
     }
 }

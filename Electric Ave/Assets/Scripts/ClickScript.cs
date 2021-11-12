@@ -11,6 +11,7 @@ public class EnergySource
     protected int amt = 0;
     protected int pwr = 0;
     protected int upgradeCost;
+    protected int Lvl = 0; //upgrade level
     public EnergySource(int prod, int cap, int cost, double poll)
     {
         this.production = prod;
@@ -19,7 +20,7 @@ public class EnergySource
         this.poll = poll;
 
         upgradeCost = (int)(cost * 3.3);
-    }
+    } 
 
     public void setAmt(int set)
     {
@@ -79,8 +80,14 @@ public class EnergySource
             production = (int)(production * 1.5);
             cap = (int)(cap * 1.5);
             upgradeCost = (int)(upgradeCost * 1.5);
+            Lvl++;
         }
         return Energy;
+    }
+
+    public int getLevel()
+    {
+        return Lvl;
     }
 }
 public class ClickScript : MonoBehaviour
@@ -95,9 +102,14 @@ public class ClickScript : MonoBehaviour
     public EnergySource bio = new EnergySource(150, 1000, 13, .4);
     public EnergySource geo   = new EnergySource(250, 1000, 14, .4);
     public Unlock sample;
+    public AudioSource buttonPress;
+    public AudioSource backgroundMusic;
+
+    bool mute = false;
 
     private void Start()
     {
+        backgroundMusic.Play();
         wind.setAmt(1);
     }
     //amount of resources
@@ -141,57 +153,101 @@ public class ClickScript : MonoBehaviour
     public void upgradeWind()
     {
         Energy = wind.upgrade(Energy);
+        if (!buttonPress.isPlaying && !mute)
+        {
+            buttonPress.Play();
+        }
     }
 
     public void upgradeSolar()
     {
         Energy = solar.upgrade(Energy);
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
     }
 
     public void upgradeHydro()
     {
         Energy = hydro.upgrade(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void upgradeBio()
     {
         Energy = bio.upgrade(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void upgradeGeo()
     {
         Energy = geo.upgrade(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
     //funcs for buttons
     public void BuySolarPanel()
     {
-        Energy = solar.buyNew(Energy);      
-    }
+        Energy = solar.buyNew(Energy);
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void BuyWindmill()
     {
         Energy = wind.buyNew(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void BuyHydroplant()
     {
         Energy = hydro.buyNew(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void BuyBio()
     {
         Energy = bio.buyNew(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void BuyGeo()
     {
         Energy = geo.buyNew(Energy);
-    }
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+        }
 
     public void collectWind()
     {
         Energy += wind.getPwr();
         sample.amountCheck();
+      if (!buttonPress.isPlaying && !mute)
+       {
+            buttonPress.Play();
+       }
 
     }
 
@@ -199,23 +255,39 @@ public class ClickScript : MonoBehaviour
     {
         Energy += hydro.getPwr();
         sample.amountCheck();
+        if (!buttonPress.isPlaying && !mute)
+        {
+            buttonPress.Play();
+        }
     }
 
     public void collectSolar()
     {
         Energy += solar.getPwr();
         sample.amountCheck();
+        if (!buttonPress.isPlaying && !mute)
+        {
+            buttonPress.Play();
+        }
     }
 
     public void collectGeo()
     {
         Energy += geo.getPwr();
         sample.amountCheck();
+        if (!buttonPress.isPlaying && !mute)
+        {
+            buttonPress.Play();
+        }
     }
     public void collectBio()
     {
         Energy += bio.getPwr();
         sample.amountCheck();
+        if (!buttonPress.isPlaying && !mute)
+        {
+            buttonPress.Play();
+        }
     }
 
     public float getPollutionProduction()
@@ -230,15 +302,26 @@ public class ClickScript : MonoBehaviour
     //updates power label
     public string UpdateEnergy()
     {
-
         return "" + Energy;
     }
 
-    
+    public void Mute()
+    {
+        mute = !mute;
+        if (!backgroundMusic.isPlaying)
+        {
+            backgroundMusic.Play();
+        }
+        else
+        {
+            backgroundMusic.Pause();
+        }
+    }
 
     private void Update()
     {
-       
+
+
         if (Time.time >= nextTime)
         {
             solar.accumPwr();

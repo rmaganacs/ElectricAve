@@ -61,7 +61,8 @@ public class Unlock : MonoBehaviour
             SolarButtonStore.interactable = true;
             SolarButtonStore.transition = Selectable.Transition.ColorTint;
         }
-        if (Energy >= 200){
+        if (Energy >= 200)
+        {
             HydroButtonStore.GetComponent<Image>().sprite = HydroImageUnockedStore;
             HydroButtonStore.interactable = true;
             HydroButtonStore.transition = Selectable.Transition.ColorTint;
