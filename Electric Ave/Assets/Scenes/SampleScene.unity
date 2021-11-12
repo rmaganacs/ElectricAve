@@ -2257,8 +2257,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuySolarPanel
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: BuyBio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2875,8 +2875,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Assembly-CSharp
-        m_MethodName: BuySolarPanel
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: BuyGeo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
