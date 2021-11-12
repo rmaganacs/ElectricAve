@@ -90,10 +90,10 @@ public class ClickScript : MonoBehaviour
     double interval = 0.5;
 
     public EnergySource solar = new EnergySource(7, 1000, 10, .1);
-    public EnergySource wind  = new EnergySource(9, 1000, 10, .5);
-    public EnergySource hydro = new EnergySource(50, 1000, 10, .2);
-    public EnergySource bio = new EnergySource(150, 1000, 10, .4);
-    public EnergySource geo   = new EnergySource(250, 1000, 10, .4);
+    public EnergySource wind  = new EnergySource(9, 1000, 11, .5);
+    public EnergySource hydro = new EnergySource(50, 1000, 12, .2);
+    public EnergySource bio = new EnergySource(150, 1000, 13, .4);
+    public EnergySource geo   = new EnergySource(250, 1000, 14, .4);
     public Unlock sample;
 
     private void Start()
