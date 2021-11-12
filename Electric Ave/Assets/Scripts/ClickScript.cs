@@ -89,11 +89,11 @@ public class ClickScript : MonoBehaviour
     double nextTime = 0;
     double interval = 0.5;
 
-    public EnergySource solar = new EnergySource(7, 1000, 2000, .1);
-    public EnergySource wind  = new EnergySource(9, 1000, 9000, .5);
-    public EnergySource hydro = new EnergySource(50, 1000, 65000, .2);
-    public EnergySource bio = new EnergySource(150, 1000, 1250000, .4);
-    public EnergySource geo   = new EnergySource(250, 1000, 1500000, .4);
+    public EnergySource solar = new EnergySource(7, 1000, 10, .1);
+    public EnergySource wind  = new EnergySource(9, 1000, 10, .5);
+    public EnergySource hydro = new EnergySource(50, 1000, 10, .2);
+    public EnergySource bio = new EnergySource(150, 1000, 10, .4);
+    public EnergySource geo   = new EnergySource(250, 1000, 10, .4);
     public Unlock sample;
 
     private void Start()
@@ -198,20 +198,24 @@ public class ClickScript : MonoBehaviour
     public void collectHydro()
     {
         Energy += hydro.getPwr();
+        sample.amountCheck();
     }
 
     public void collectSolar()
     {
         Energy += solar.getPwr();
+        sample.amountCheck();
     }
 
     public void collectGeo()
     {
         Energy += geo.getPwr();
+        sample.amountCheck();
     }
     public void collectBio()
     {
         Energy += bio.getPwr();
+        sample.amountCheck();
     }
 
     public float getPollutionProduction()
