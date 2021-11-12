@@ -763,7 +763,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789352577}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2159,14 +2159,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 368606854}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 368606856}
-        m_TargetAssemblyTypeName: WaitTimer, Scripts
-        m_MethodName: Start
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: collectWind
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2176,9 +2176,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2120946718}
-        m_TargetAssemblyTypeName: ClickScript, Scripts
-        m_MethodName: collectWind
+      - m_Target: {fileID: 368606856}
+        m_TargetAssemblyTypeName: WaitTimer, Scripts
+        m_MethodName: Start
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2441,7 +2441,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789352577}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4481,8 +4481,8 @@ RectTransform:
   - {fileID: 1679245183}
   - {fileID: 297215690}
   - {fileID: 368606852}
-  - {fileID: 452183482}
   - {fileID: 110663373}
+  - {fileID: 452183482}
   - {fileID: 1975603036}
   - {fileID: 658192949}
   - {fileID: 744560095}
@@ -10754,6 +10754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120946717}
   - component: {fileID: 2120946718}
+  - component: {fileID: 2120946719}
   m_Layer: 5
   m_Name: ButtonMaster
   m_TagString: Untagged
@@ -10792,7 +10793,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8af18683287924459a3b0d25a11eb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sample: {fileID: 2120946719}
   Pollution: 5000
+--- !u!114 &2120946719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120946716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcb522f1ce925e44a9b6b9f565c7db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyValue: {fileID: 2120946718}
+  SolarButtonStore: {fileID: 1266133978}
+  SolarImageUnockedStore: {fileID: 21300000, guid: f283f8b2b71e95045936316db5583637, type: 3}
+  HydroButtonStore: {fileID: 1982194955}
+  HydroImageUnockedStore: {fileID: 21300000, guid: 9774eaf0fc3ceb540b573da272eb85ea, type: 3}
+  BioButtonStore: {fileID: 504399571}
+  BioImageUnockedStore: {fileID: 21300000, guid: f6f4f23dd7ea1304295c36f32d89df74, type: 3}
+  GeoButtonStore: {fileID: 644988816}
+  GeoImageUnockedStore: {fileID: 21300000, guid: 5b8b06b0dd202b14eabed41d5639cd11, type: 3}
 --- !u!1 &2139150272
 GameObject:
   m_ObjectHideFlags: 0

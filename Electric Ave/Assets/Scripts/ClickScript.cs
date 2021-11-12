@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class EnergySource
 {
     protected int production;
@@ -62,7 +60,7 @@ public class EnergySource
     {
         return cost;
     }
-    
+
     public int getAmt()
     {
         return amt;
@@ -74,7 +72,7 @@ public class EnergySource
     }
     public int upgrade(int Energy)
     {
-        if(Energy >= upgradeCost)
+        if (Energy >= upgradeCost)
         {
             Energy -= upgradeCost;
             cost = (int)(cost * 1.5);
@@ -94,8 +92,9 @@ public class ClickScript : MonoBehaviour
     public EnergySource solar = new EnergySource(7, 1000, 2000, .1);
     public EnergySource wind  = new EnergySource(9, 1000, 9000, .5);
     public EnergySource hydro = new EnergySource(50, 1000, 65000, .2);
-    public EnergySource geo   = new EnergySource(250, 1000, 1250000, .4);
-    public EnergySource bio   = new EnergySource(150, 1000, 1500000, .4);
+    public EnergySource bio = new EnergySource(150, 1000, 1250000, .4);
+    public EnergySource geo   = new EnergySource(250, 1000, 1500000, .4);
+    public Unlock sample;
 
     private void Start()
     {
@@ -113,7 +112,10 @@ public class ClickScript : MonoBehaviour
     {
         return solar.getCost();
     }
-
+    public int getEnergy()
+    {
+        return Energy;
+    }
     public int getWindCost()
     {
         return wind.getCost();
@@ -189,6 +191,8 @@ public class ClickScript : MonoBehaviour
     public void collectWind()
     {
         Energy += wind.getPwr();
+        sample.amountCheck();
+
     }
 
     public void collectHydro()
