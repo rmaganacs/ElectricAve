@@ -683,6 +683,18 @@ MonoBehaviour:
           m_StringArgument: hydro_open
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: clickResource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &88381791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,6 +1462,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: solar_open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: clickResource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &225128765
@@ -3968,6 +3992,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: bio_open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: clickResource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &720956534
@@ -6999,6 +7035,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: wind_open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: clickResource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1397060548
@@ -10286,6 +10334,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: geo_open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2120946718}
+        m_TargetAssemblyTypeName: ClickScript, Scripts
+        m_MethodName: clickResource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1988553762

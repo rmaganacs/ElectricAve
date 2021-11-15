@@ -149,7 +149,13 @@ public class ClickScript : MonoBehaviour
     }
 
     //upgrade funcs
-
+    public void clickResource()
+    {
+            if (!buttonPress.isPlaying && !mute)
+            {
+                buttonPress.Play();
+            }
+    }
     public void upgradeWind()
     {
         Energy = wind.upgrade(Energy);
