@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
+using System;
+using UnityEngine.Profiling;
+
+
 public class EnergySource
 {
     protected int production;
+    int temp;
     protected int cap;
     protected int cost;
     protected double poll;
@@ -36,19 +42,20 @@ public class EnergySource
         else pwr = cap;
     }
 
-    public int buyNew(int Energy)
+    public void buyNew(ref int Energy)
     {
         if (Energy > cost)
         {
             Energy = Energy - cost;
             amt++;
+            cost = (int)(cost * 1.3);
         }
-        return Energy;
+
     }
 
     public int getPwr()
     {
-        int temp = pwr;
+        temp = pwr;
         pwr = 0;
         return temp;
     }
@@ -71,7 +78,7 @@ public class EnergySource
     {
         return upgradeCost;
     }
-    public int upgrade(int Energy)
+    public void upgrade(ref int Energy)
     {
         if (Energy >= upgradeCost)
         {
@@ -82,7 +89,7 @@ public class EnergySource
             upgradeCost = (int)(upgradeCost * 1.5);
             Lvl++;
         }
-        return Energy;
+
     }
 
     public int getLevel()
@@ -96,11 +103,11 @@ public class ClickScript : MonoBehaviour
     double nextTime = 0;
     double interval = 0.5;
 
-    public EnergySource solar = new EnergySource(7, 1000, 10, .1);
-    public EnergySource wind  = new EnergySource(9, 1000, 11, .5);
-    public EnergySource hydro = new EnergySource(50, 1000, 12, .2);
-    public EnergySource bio = new EnergySource(150, 1000, 13, .4);
-    public EnergySource geo   = new EnergySource(250, 1000, 14, .4);
+    public EnergySource solar = new EnergySource(50, 1200, 700, .1);
+    public EnergySource wind  = new EnergySource(20, 1000, 100, .5);
+    public EnergySource hydro = new EnergySource(150, 2000, 1500, .2);
+    public EnergySource bio = new EnergySource(300, 5000, 20000, .4);
+    public EnergySource geo   = new EnergySource(450, 8000, 100000, .7);
     public Unlock sample;
     public AudioSource buttonPress;
     public AudioSource backgroundMusic;
@@ -115,7 +122,7 @@ public class ClickScript : MonoBehaviour
     //amount of resources
 
 
-    int Energy = 0;
+    public int Energy = 0;
     public double Pollution = 5000;
     
 
@@ -158,7 +165,7 @@ public class ClickScript : MonoBehaviour
     }
     public void upgradeWind()
     {
-        Energy = wind.upgrade(Energy);
+        wind.upgrade(ref Energy);
         if (!buttonPress.isPlaying && !mute)
         {
             buttonPress.Play();
@@ -167,7 +174,7 @@ public class ClickScript : MonoBehaviour
 
     public void upgradeSolar()
     {
-        Energy = solar.upgrade(Energy);
+        solar.upgrade(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -176,7 +183,7 @@ public class ClickScript : MonoBehaviour
 
     public void upgradeHydro()
     {
-        Energy = hydro.upgrade(Energy);
+        hydro.upgrade(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -185,7 +192,7 @@ public class ClickScript : MonoBehaviour
 
     public void upgradeBio()
     {
-        Energy = bio.upgrade(Energy);
+        bio.upgrade(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -194,7 +201,7 @@ public class ClickScript : MonoBehaviour
 
     public void upgradeGeo()
     {
-        Energy = geo.upgrade(Energy);
+        geo.upgrade(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -203,7 +210,7 @@ public class ClickScript : MonoBehaviour
     //funcs for buttons
     public void BuySolarPanel()
     {
-        Energy = solar.buyNew(Energy);
+        solar.buyNew(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -212,7 +219,7 @@ public class ClickScript : MonoBehaviour
 
     public void BuyWindmill()
     {
-        Energy = wind.buyNew(Energy);
+        wind.buyNew(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -221,7 +228,7 @@ public class ClickScript : MonoBehaviour
 
     public void BuyHydroplant()
     {
-        Energy = hydro.buyNew(Energy);
+        hydro.buyNew(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -230,7 +237,7 @@ public class ClickScript : MonoBehaviour
 
     public void BuyBio()
     {
-        Energy = bio.buyNew(Energy);
+        bio.buyNew(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -239,7 +246,7 @@ public class ClickScript : MonoBehaviour
 
     public void BuyGeo()
     {
-        Energy = geo.buyNew(Energy);
+        geo.buyNew(ref Energy);
             if (!buttonPress.isPlaying && !mute)
             {
                 buttonPress.Play();
@@ -248,8 +255,7 @@ public class ClickScript : MonoBehaviour
 
     public void collectWind()
     {
-        Energy += wind.getPwr();
-        sample.amountCheck();
+       Energy += wind.getPwr();
       if (!buttonPress.isPlaying && !mute)
        {
             buttonPress.Play();
@@ -260,7 +266,6 @@ public class ClickScript : MonoBehaviour
     public void collectHydro()
     {
         Energy += hydro.getPwr();
-        sample.amountCheck();
         if (!buttonPress.isPlaying && !mute)
         {
             buttonPress.Play();
@@ -270,7 +275,6 @@ public class ClickScript : MonoBehaviour
     public void collectSolar()
     {
         Energy += solar.getPwr();
-        sample.amountCheck();
         if (!buttonPress.isPlaying && !mute)
         {
             buttonPress.Play();
@@ -280,7 +284,6 @@ public class ClickScript : MonoBehaviour
     public void collectGeo()
     {
         Energy += geo.getPwr();
-        sample.amountCheck();
         if (!buttonPress.isPlaying && !mute)
         {
             buttonPress.Play();
@@ -289,7 +292,6 @@ public class ClickScript : MonoBehaviour
     public void collectBio()
     {
         Energy += bio.getPwr();
-        sample.amountCheck();
         if (!buttonPress.isPlaying && !mute)
         {
             buttonPress.Play();
@@ -327,7 +329,7 @@ public class ClickScript : MonoBehaviour
     private void Update()
     {
 
-
+        sample.amountCheck();
         if (Time.time >= nextTime)
         {
             solar.accumPwr();

@@ -7,26 +7,20 @@ public class WaitTimer : MonoBehaviour
 {
     public Button WindButton;
     private bool isEnabled = false;
+    Button btn;
 
     public void Start()
     {
-        StartCoroutine(ButtonCoroutine(isEnabled));
+        StartCoroutine(ButtonCoroutine());
     }
 
-    IEnumerator ButtonCoroutine(bool value)
-    {
-        yield return new WaitForSeconds(3f);
-        // Turn on the button & make it active
-        Button btn = WindButton.GetComponent<Button>();
-        WindButton.interactable = true;
-        isEnabled = !isEnabled;
-        btn.onClick.AddListener(isTask);
-    }
-
-    void isTask()
+    IEnumerator ButtonCoroutine()
     {
         WindButton.interactable = false;
-        StartCoroutine(ButtonCoroutine(isEnabled));
+        yield return new WaitForSeconds(3f);
+        // Turn on the button & make it active
+        WindButton.interactable = true;
     }
+
     
 }

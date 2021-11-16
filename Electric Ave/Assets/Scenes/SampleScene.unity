@@ -11055,6 +11055,7 @@ MonoBehaviour:
   sample: {fileID: 2120946719}
   buttonPress: {fileID: 840261687}
   backgroundMusic: {fileID: 263090434}
+  Energy: 0
   Pollution: 5000
 --- !u!114 &2120946719
 MonoBehaviour:

@@ -51,29 +51,35 @@ public class Unlock : MonoBehaviour
     public bool bioUn = false;
     public bool geoUn = false;
 
+    int solarChecker;
+    int hydroChecker;
+    int bioChecker;
+    int geoChecker;
+
+    int Energy;
 
     public void amountCheck()
     {
-        int Energy = energyValue.getEnergy();
-        if (Energy >= 100)
+        Energy = energyValue.getEnergy();
+        if (Energy >= 700 && !solarUn)
         {
             SolarButtonStore.GetComponent<Image>().sprite = SolarImageUnockedStore;
             SolarButtonStore.interactable = true;
             SolarButtonStore.transition = Selectable.Transition.ColorTint;
         }
-        if (Energy >= 200)
+        if (Energy >= 1500 && !hydroUn)
         {
             HydroButtonStore.GetComponent<Image>().sprite = HydroImageUnockedStore;
             HydroButtonStore.interactable = true;
             HydroButtonStore.transition = Selectable.Transition.ColorTint;
         }
-        if (Energy >= 300)
+        if (Energy >= 20000 && !bioUn)
         {
             BioButtonStore.GetComponent<Image>().sprite = BioImageUnockedStore;
             BioButtonStore.interactable = true;
             BioButtonStore.transition = Selectable.Transition.ColorTint;
         }
-        if (Energy >= 400)
+        if (Energy >= 100000 && !geoUn)
         {
             GeoButtonStore.GetComponent<Image>().sprite = GeoImageUnockedStore;
             GeoButtonStore.interactable = true;
@@ -83,10 +89,11 @@ public class Unlock : MonoBehaviour
 
     void Update()
     {
-        int solarChecker = energyValue.solar.getAmt();
-        int hydroChecker = energyValue.hydro.getAmt();
-        int bioChecker = energyValue.bio.getAmt();
-        int geoChecker = energyValue.geo.getAmt();
+        if(!solarUn) solarChecker = energyValue.solar.getAmt();
+        if(!hydroUn) hydroChecker = energyValue.hydro.getAmt();
+        if(!bioUn) bioChecker = energyValue.bio.getAmt();
+        if(!geoUn) geoChecker = energyValue.geo.getAmt();
+
         if (solarChecker >= 1 && solarUn == false)
         {
             SolarButtonUpgrade.GetComponent<Image>().sprite = SolarImageUnockedUpgrade;

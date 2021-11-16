@@ -20,7 +20,7 @@ public class PollutionRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        changeRate = scr.getPollutionProduction() / 100.0f;
+        changeRate = scr.getPollutionProduction() / 10000.0f;
         if (needle.transform.eulerAngles.z <= 250)
         {   
             needle.transform.Rotate(0, 0, changeRate);
