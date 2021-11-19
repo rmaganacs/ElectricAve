@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
@@ -19,17 +20,24 @@ public static class SaveSystem
     public static SaveScript loadSate()
     {
         string path = Application.persistentDataPath + "/state.save";
+        SaveScript data = null;
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            SaveScript data = formatter.Deserialize(stream) as SaveScript;
-            stream.Close();
-            return data;
+            try
+            {
+                if (stream.Length > 0)
+                {
+                    data = formatter.Deserialize(stream) as SaveScript;
+                }
+            }
+            finally
+            {
+                stream.Close();
+            }
+
         }
-        else
-        {
-            return null;
-        }
+        return data;
     }
 }

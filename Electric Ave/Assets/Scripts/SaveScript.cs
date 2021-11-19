@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class SaveScript
 {
-    object[] saveData = new object[10];
+    object[] saveData = new object[11];
 
     public SaveScript(ClickScript src, Unlock progress)
     {

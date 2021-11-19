@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.Profiling;
 
-
+[Serializable]
 public class EnergySource
 {
     protected int production;
@@ -103,11 +103,11 @@ public class ClickScript : MonoBehaviour
     double nextTime = 0;
     double interval = 0.5;
 
-    public EnergySource solar;
-    public EnergySource wind;
-    public EnergySource hydro;
-    public EnergySource bio;
-    public EnergySource geo;
+    public EnergySource solar = new EnergySource(50, 1200, 700, .1);
+    public EnergySource wind = new EnergySource(20, 1000, 100, .5);
+    public EnergySource hydro = new EnergySource(150, 2000, 1500, .2);
+    public EnergySource bio = new EnergySource(300, 5000, 20000, .4);
+    public EnergySource geo = new EnergySource(450, 8000, 100000, .7);
     public Unlock sample;
     public AudioSource buttonPress;
     public AudioSource backgroundMusic;
@@ -119,9 +119,11 @@ public class ClickScript : MonoBehaviour
     private void Start()
     {
         backgroundMusic.Play();
+        wind.setAmt(1);
         SaveScript data = SaveSystem.loadSate();
         if(data != null)
         {
+            Debug.Log("loaded Save");
             Energy = (int)data.getData()[0];
             Pollution = (double)data.getData()[1];
             solar = (EnergySource)data.getData()[2];
@@ -134,15 +136,8 @@ public class ClickScript : MonoBehaviour
             sample.geoUn = (bool)data.getData()[9];
             sample.bioUn = (bool)data.getData()[10];
         }
-        else
+        if(wind.getAmt() == 0)
         {
-            solar = new EnergySource(50, 1200, 700, .1);
-            wind = new EnergySource(20, 1000, 100, .5);
-            hydro = new EnergySource(150, 2000, 1500, .2);
-            bio = new EnergySource(300, 5000, 20000, .4);
-            geo = new EnergySource(450, 8000, 100000, .7);
-            Energy = 0;
-            Pollution = 5000;
             wind.setAmt(1);
         }
     }
@@ -375,10 +370,9 @@ public class ClickScript : MonoBehaviour
             geo.accumPwr();
             bio.accumPwr();
             nextTime += interval;
-        }
-        if (Time.time >= 10 *nextTime)
-        {
+            Debug.Log("Saving...");
             SaveSystem.saveState(this, sample);
+            Debug.Log("Saved");
         }
     }
 }
