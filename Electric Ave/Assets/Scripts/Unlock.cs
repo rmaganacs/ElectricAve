@@ -87,6 +87,11 @@ public class Unlock : MonoBehaviour
         }
     }
 
+    public bool[] getUnlocks()
+    {
+        return new bool[] {solarUn, hydroUn, geoUn, bioUn};
+    }
+
     void Update()
     {
         if(!solarUn) solarChecker = energyValue.solar.getAmt();

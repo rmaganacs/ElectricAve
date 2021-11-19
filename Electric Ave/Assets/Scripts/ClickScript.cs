@@ -103,27 +103,54 @@ public class ClickScript : MonoBehaviour
     double nextTime = 0;
     double interval = 0.5;
 
-    public EnergySource solar = new EnergySource(50, 1200, 700, .1);
-    public EnergySource wind  = new EnergySource(20, 1000, 100, .5);
-    public EnergySource hydro = new EnergySource(150, 2000, 1500, .2);
-    public EnergySource bio = new EnergySource(300, 5000, 20000, .4);
-    public EnergySource geo   = new EnergySource(450, 8000, 100000, .7);
+    public EnergySource solar;
+    public EnergySource wind;
+    public EnergySource hydro;
+    public EnergySource bio;
+    public EnergySource geo;
     public Unlock sample;
     public AudioSource buttonPress;
     public AudioSource backgroundMusic;
 
     bool mute = false;
+    public int Energy = 0;
+    public double Pollution = 5000;
 
     private void Start()
     {
         backgroundMusic.Play();
-        wind.setAmt(1);
+        SaveScript data = SaveSystem.loadSate();
+        if(data != null)
+        {
+            Energy = (int)data.getData()[0];
+            Pollution = (double)data.getData()[1];
+            solar = (EnergySource)data.getData()[2];
+            hydro = (EnergySource)data.getData()[3];
+            wind = (EnergySource)data.getData()[4];
+            bio = (EnergySource)data.getData()[5];
+            geo = (EnergySource)data.getData()[6];
+            sample.solarUn = (bool)data.getData()[7];
+            sample.hydroUn = (bool)data.getData()[8];
+            sample.geoUn = (bool)data.getData()[9];
+            sample.bioUn = (bool)data.getData()[10];
+        }
+        else
+        {
+            solar = new EnergySource(50, 1200, 700, .1);
+            wind = new EnergySource(20, 1000, 100, .5);
+            hydro = new EnergySource(150, 2000, 1500, .2);
+            bio = new EnergySource(300, 5000, 20000, .4);
+            geo = new EnergySource(450, 8000, 100000, .7);
+            Energy = 0;
+            Pollution = 5000;
+            wind.setAmt(1);
+        }
     }
+
     //amount of resources
 
 
-    public int Energy = 0;
-    public double Pollution = 5000;
+
     
 
     //getters to display prices
@@ -135,6 +162,16 @@ public class ClickScript : MonoBehaviour
     {
         return Energy;
     }
+    public double getPollution()
+    {
+        return Pollution;
+    }
+
+    public EnergySource[] getEnergies()
+    {
+        return new EnergySource[5] { solar, hydro, wind, bio, geo };
+    }
+
     public int getWindCost()
     {
         return wind.getCost();
@@ -338,6 +375,10 @@ public class ClickScript : MonoBehaviour
             geo.accumPwr();
             bio.accumPwr();
             nextTime += interval;
+        }
+        if (Time.time >= 10 *nextTime)
+        {
+            SaveSystem.saveState(this, sample);
         }
     }
 }
