@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_ANDROID
 using Unity.Notifications.Android;
-
 public class notify : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -32,3 +32,4 @@ public class notify : MonoBehaviour
         
     }
 }
+#endif
