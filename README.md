@@ -28,6 +28,7 @@ Step 2: Click File->Build Settings. Make sure target platform is Windows. Then B
 Step 3: It should run the game as a desktop version.
 
 ###IF YOU DO NOT WANT TO BUILD IT YOURSELF
+Download APK and EXE files from this link: https://www.mediafire.com/file/b4093ymgdqn3u27/APK_and_EXE.zip/file
 
 We provided the .exe files for Windows in the Windows Edition Folder
 Click on the ElectricAve.exe file to play on desktop
