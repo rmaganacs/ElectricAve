@@ -1,3 +1,5 @@
+![main](https://user-images.githubusercontent.com/68285355/185267052-a32085d3-cc1a-4376-9b47-6c1618fe0e61.png)
+
 ## About this Application:
 Electic Avenue is a simple clicker game that revolves around upgrading different forms of energy sources. 
 
